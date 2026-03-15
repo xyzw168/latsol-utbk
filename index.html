@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latsol UTBK SNBT - Dashboard Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f1f5f9;
+            --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --sidebar-bg: #1e293b;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* SIDEBAR */
+        nav {
+            width: 300px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .logo-area { font-weight: 800; font-size: 1.2rem; color: var(--accent); margin-bottom: 2rem; }
+        
+        .menu-category { margin-bottom: 1.5rem; }
+        .category-title { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .subtest-list { list-style: none; }
+        .subtest-item { margin-bottom: 0.5rem; }
+        .subtest-btn {
+            width: 100%;
+            text-align: left;
+            padding: 10px;
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .subtest-btn:hover { background: var(--bg-color); }
+        .subtest-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(79, 70, 229, 0.05); }
+
+        .day-list { padding-left: 1.5rem; margin-top: 5px; display: none; }
+        .day-list.active { display: block; }
+        .day-btn {
+            display: block;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 2px;
+        }
+        .day-btn:hover { background: var(--bg-color); color: var(--accent); }
+        .day-btn.active { color: var(--accent); font-weight: 600; }
+
+        /* MAIN CONTENT */
+        main { flex: 1; padding: 2.5rem; display: flex; flex-direction: column; align-items: center; }
+        .content-header { width: 100%; max-width: 750px; display: flex; justify-content: space-between; margin-bottom: 2rem; }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 750px;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        .question-meta { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
+        .question-text { font-size: 1.15rem; font-weight: 500; margin-bottom: 2rem; white-space: pre-line; }
+
+        .options { display: grid; gap: 12px; }
+        .option {
+            padding: 15px 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .option:hover { border-color: var(--accent); background: rgba(79, 70, 229, 0.03); }
+        .option.selected { border-color: var(--accent); background: rgba(79, 70, 229, 0.08); }
+        .option.correct { border-color: var(--success); background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .option.wrong { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+
+        .btn {
+            margin-top: 2rem;
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-check { background: var(--accent); color: white; width: 100%; }
+        .btn-check:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .pembahasan {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-color);
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .theme-toggle { cursor: pointer; background: none; border: 1px solid var(--border); padding: 5px 12px; border-radius: 20px; color: var(--text-main); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-area">Latsol UTBK 2026</div>
+        
+        <div class="menu-category">
+            <span class="category-title">Subtes Materi</span>
+            <ul class="subtest-list" id="sidebarMenu">
+                </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="content-header">
+            <h2 id="currentSubtestTitle">Pilih Materi</h2>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Mode</button>
+        </div>
+
+        <div class="quiz-container" id="quizBox" style="display: none;">
+            <span class="question-meta" id="qMeta">Soal 1</span>
+            <div class="question-text" id="qText"></div>
+            <div class="options" id="optionsBox"></div>
+            
+            <button class="btn btn-check" id="checkBtn" disabled onclick="checkAnswer()">Cek Jawaban</button>
+            
+            <div class="pembahasan" id="pembahasanBox">
+                <strong style="display:block; margin-bottom: 5px;">Pembahasan:</strong>
+                <p id="pembahasanText"></p>
+            </div>
+        </div>
+        
+        <div id="welcomeScreen" style="text-align: center; margin-top: 5rem; color: var(--text-muted);">
+            <h3>Selamat Belajar!</h3>
+            <p>Silakan pilih subtes dan hari di menu samping untuk memulai.</p>
+        </div>
+    </main>
+
+    <script>
+        // 1. DATA MASTER
+        const subtests = [
+            "Penalaran Umum", 
+            "Pengetahuan dan Pemahaman Umum", 
+            "Pemahaman Bacaan dan Menulis", 
+            "Pengetahuan Kuantitatif", 
+            "Literasi dalam Bahasa Indonesia", 
+            "Literasi dalam Bahasa Inggris", 
+            "Penalaran Matematika"
+        ];
+
+        // Contoh Data Soal (Bisa kamu tambahkan lebih banyak di sini)
+        const allQuestions = {
+            "Pengetahuan Kuantitatif": {
+                "Day 1": [
+                    {
+                        pertanyaan: "Berapakah nilai x yang memenuhi persamaan 3x + 7 = 22?",
+                        pilihan: ["A. 3", "B. 4", "C. 5", "D. 6", "E. 7"],
+                        kunci: 2,
+                        bahas: "3x = 22 - 7 => 3x = 15 => x = 5."
+                    }
+                ]
+            },
+            "Penalaran Umum": {
+                "Day 1": [
+                    {
+                        pertanyaan: "Jika hari hujan, maka tanah basah. Saat ini tanah tidak basah. Kesimpulannya?",
+                        pilihan: ["A. Hari hujan", "B. Hari tidak hujan", "C. Tanah kering", "D. Langit mendung", "E. Tidak ada kesimpulan"],
+                        kunci: 1,
+                        bahas: "Menggunakan aturan Modus Tollens: P → Q, ~Q maka ~P. Jadi, hari tidak hujan."
+                    }
+                ]
+            }
+            // Tambahkan subtes dan day lainnya di sini...
+        };
+
+        // 2. RENDER MENU SIDEBAR
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        subtests.forEach((name, index) => {
+            const li = document.createElement('li');
+            li.className = 'subtest-item';
+            li.innerHTML = `
+                <button class="subtest-btn" onclick="toggleSubmenu(${index})">${name}</button>
+                <div class="day-list" id="submenu-${index}">
+                    <a href="#" class="day-btn" onclick="startQuiz('${name}', 'Day 1')">Day 1</a>
+                    <a href="#" class="day-btn" onclick="startQuiz('${name}', 'Day 2')">Day 2</a>
+                    <a href="#" class="day-btn" onclick="startQuiz('${name}', 'Day 3')">Day 3</a>
+                </div>
+            `;
+            sidebarMenu.appendChild(li);
+        });
+
+        function toggleSubmenu(idx) {
+            const allSub = document.querySelectorAll('.day-list');
+            const allBtn = document.querySelectorAll('.subtest-btn');
+            allSub.forEach((el, i) => {
+                if(i === idx) el.classList.toggle('active');
+                else el.classList.remove('active');
+            });
+            allBtn.forEach((btn, i) => {
+                if(i === idx) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
+
+        // 3. QUIZ ENGINE
+        let currentQuestion = null;
+        let selectedIdx = null;
+
+        function startQuiz(subtest, day) {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('quizBox').style.display = 'block';
+            document.getElementById('currentSubtestTitle').innerText = `${subtest} - ${day}`;
+            
+            // Sembunyikan pembahasan sebelumnya
+            document.getElementById('pembahasanBox').style.display = 'none';
+            document.getElementById('checkBtn').disabled = true;
+
+            // Ambil soal (jika data kosong, berikan placeholder)
+            const dataSet = (allQuestions[subtest] && allQuestions[subtest][day]) 
+                            ? allQuestions[subtest][day][0] 
+                            : { pertanyaan: "Soal untuk " + subtest + " " + day + " belum tersedia.", pilihan: ["Opsi A", "Opsi B", "Opsi C", "Opsi D", "Opsi E"], kunci: 0, bahas: "Belum ada pembahasan." };
+            
+            currentQuestion = dataSet;
+            renderQuestion(dataSet);
+        }
+
+        function renderQuestion(data) {
+            document.getElementById('qText').innerText = data.pertanyaan;
+            const box = document.getElementById('optionsBox');
+            box.innerHTML = '';
+            selectedIdx = null;
+
+            data.pilihan.forEach((txt, i) => {
+                const opt = document.createElement('div');
+                opt.className = 'option';
+                opt.innerText = txt;
+                opt.onclick = () => {
+                    if(document.getElementById('pembahasanBox').style.display === 'block') return;
+                    document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+                    opt.classList.add('selected');
+                    selectedIdx = i;
+                    document.getElementById('checkBtn').disabled = false;
+                };
+                box.appendChild(opt);
+            });
+        }
+
+        function checkAnswer() {
+            const opts = document.querySelectorAll('.option');
+            const correct = currentQuestion.kunci;
+            
+            opts[selectedIdx].classList.add(selectedIdx === correct ? 'correct' : 'wrong');
+            opts[correct].classList.add('correct');
+            
+            document.getElementById('pembahasanText').innerText = currentQuestion.bahas;
+            document.getElementById('pembahasanBox').style.display = 'block';
+            document.getElementById('checkBtn').disabled = true;
+        }
+
+        // 4. THEME TOGGLE
+        function toggleTheme() {
+            const html = document.documentElement;
+            if(html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+            }
+        }
+    </script>
+</body>
+</html>
