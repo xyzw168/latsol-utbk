@@ -327,7 +327,7 @@ var currentDataSoal = [
             "(e) 18"
         ],
         "kunci": 2,
-        "bahas": "Hasil roti pada hari ke-6 adalah 16 kg (C).\n\nAnalisis Pola:\n- Data Roti: 5, 8, 9, 12, 13.\n- Perubahan antar hari:\n  - 5 ke 8 (+3)\n  - 8 ke 9 (+1)\n  - 9 ke 12 (+3)\n  - 12 ke 13 (+1)\n- Pola yang terbentuk adalah selang-seling (+3, +1, +3, +1).\n- Maka, untuk hari ke-6: 13 + 3 = 16 kg."
+        "bahas": "Hasil roti pada hari ke-6 adalah 16 kg (C).\n\nAnalisis Pola Roti: 5, 8, 9, 12, 13... \n- 5 ke 8 (+3)\n- 8 ke 9 (+1)\n- 9 ke 12 (+3)\n- 12 ke 13 (+1)\n- Maka selanjutnya adalah +3. Jadi, 13 + 3 = 16."
     },
     {
         "pertanyaan": "28. Jumlah penggunaan pupuk tahun lalu 20% lebih sedikit dibandingkan jumlah yang digunakan tahun ini. Jika jumlah pupuk yang digunakan tahun ini adalah 240 kg. Berapakah jumlah pupuk yang digunakan tahun lalu?",
