@@ -1,0 +1,3 @@
+## 2026-03-24 - Interactive Custom Controls Accessibility
+**Learning:** When using `div` elements as custom interactive inputs (like radio buttons in quiz options), they lack native keyboard support and semantic meaning out-of-the-box. Screen readers and keyboard-only users will struggle to interact with them unless specific ARIA attributes (`role="radio"`, `aria-checked`) and keyboard event listeners (`keydown` for Enter/Space) are explicitly added, alongside visual focus states (`:focus-visible`).
+**Action:** Always verify keyboard operability (Tab order, Enter/Space selection) and screen reader support when creating custom form controls instead of using native `<input>` elements.
