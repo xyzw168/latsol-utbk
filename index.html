@@ -100,7 +100,7 @@
         <div id="quiz-ui" class="quiz-card" style="display: none;">
             <span class="q-meta" id="q-meta">Soal 1</span>
             <div class="q-text" id="q-text"></div>
-            <div class="options" id="options-box"></div>
+            <div class="options" id="options-box" role="radiogroup" aria-label="Pilihan jawaban"></div>
             <button class="btn btn-primary" id="action-btn" disabled onclick="handleAction()">Cek Jawaban</button>
             
             <div class="pembahasan" id="pembahasan-box">
@@ -220,16 +220,33 @@ function renderQuestion() {
 
     const box = document.getElementById('options-box');
     box.innerHTML = '';
+
+    const selectOption = (div, i) => {
+        if(isChecking) return;
+        box.querySelectorAll('.option').forEach(el => {
+            el.classList.remove('selected');
+            el.setAttribute('aria-checked', 'false');
+        });
+        div.classList.add('selected');
+        div.setAttribute('aria-checked', 'true');
+        selectedIdx = i;
+        document.getElementById('action-btn').disabled = false;
+    };
+
     q.pilihan.forEach((p, i) => {
         const div = document.createElement('div');
         div.className = 'option';
         div.innerText = p;
-        div.onclick = () => {
-            if(isChecking) return;
-            document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
-            div.classList.add('selected');
-            selectedIdx = i;
-            document.getElementById('action-btn').disabled = false;
+        div.setAttribute('role', 'radio');
+        div.setAttribute('tabindex', '0');
+        div.setAttribute('aria-checked', 'false');
+
+        div.onclick = () => selectOption(div, i);
+        div.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectOption(div, i);
+            }
         };
         box.appendChild(div);
     });
