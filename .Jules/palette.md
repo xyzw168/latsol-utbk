@@ -1,0 +1,5 @@
+## 2024-05-24 - Interactive Quiz Options Keyboard Accessibility
+
+**Learning:** Custom interactive quiz options using `div` elements are completely inaccessible to keyboard users without explicitly defining their roles, focusability, and keyboard event handling. Using `tabindex="0"`, `role="radiogroup"`, `role="radio"`, and updating `aria-checked` states are critical for a proper screen reader and keyboard navigation experience, as is implementing Enter and Space keys to select the options.
+
+**Action:** Whenever creating custom radio button groups from generic elements like `div`s (such as interactive options in a quiz), explicitly assign `role="radiogroup"` to the container, and `role="radio"`, `tabindex="0"`, and `aria-checked="false"` (toggled to `"true"` when selected) to the options. Attach `keydown` event listeners to the options to capture `Enter` and `Space` keys to mimic default button click behavior. Also, guarantee visual feedback for keyboard focus by explicitly defining `:focus-visible` styles.
