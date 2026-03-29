@@ -1,0 +1,3 @@
+## 2026-03-29 - Custom Radio Buttons Accessibility
+**Learning:** Custom interactive elements like custom radio buttons created with `div` tags lack native keyboard navigation (`tab` indexing, `Enter`/`Space` selection) and screen reader support (`role`, `aria-checked`). They must be explicitly provided.
+**Action:** When creating custom radio buttons, ensure the container has `role="radiogroup"` and each option has `role="radio"`, `tabindex="0"`, and `aria-checked` states toggled. Always add a `keydown` listener to handle `Enter` and `Space` key presses to maintain parity with native elements. Also provide a `:focus-visible` state.
