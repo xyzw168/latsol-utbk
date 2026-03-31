@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Quiz Options Keyboard Accessibility Pattern
+**Learning:** The interactive quiz options ('.option' elements) within the '#options-box' container in this design system do not use standard `<input type="radio">` tags. They rely on custom JS logic (`selected` class toggling) which breaks native keyboard accessibility and screen reader support.
+**Action:** When working with similar custom option components in this app, ensure to apply the custom radiogroup accessibility pattern: wrap them in a container with `role="radiogroup"`, assign each option `role="radio"`, `tabindex="0"`, toggle `aria-checked`, add `:focus-visible` styling, and attach `keydown` listeners for Enter/Space keys to trigger selection.
