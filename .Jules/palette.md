@@ -1,0 +1,3 @@
+## 2025-05-15 - Interactive Quiz Options Keyboard Navigation
+**Learning:** When using custom div elements instead of native input elements for a radiogroup (like the quiz options here), standard `onclick` events aren't triggered by keyboard interaction. Screen readers and keyboard users rely on custom implementation for interaction and state signaling.
+**Action:** Always complement custom interactive components with `tabindex`, appropriate ARIA roles (`role="radiogroup"`, `role="radio"`), state toggling (`aria-checked`), and a `keydown` event listener that explicitly handles 'Enter' and Spacebar keys to mimic the `onclick` behavior. Use `:focus-visible` for proper visual keyboard feedback. Avoid global document queries when possible.
