@@ -1,0 +1,3 @@
+## 2024-05-25 - Custom Radio Options Keyboard Accessibility
+**Learning:** In this project, quiz options are built using custom `div` elements instead of native `<input type="radio">`. This causes them to be completely inaccessible to keyboard and screen reader users by default.
+**Action:** When creating custom selectable lists (like quiz options), always apply `role="radiogroup"` to the container and `role="radio"`, `tabindex="0"`, and `aria-checked` attributes to the items. Implement a `keydown` listener to handle Space/Enter for activation. Also ensure a global `:focus-visible` outline is defined so keyboard focus is visually apparent.
