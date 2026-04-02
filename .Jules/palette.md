@@ -1,0 +1,3 @@
+## 2025-04-02 - Custom Accessible Radio Group Pattern
+**Learning:** When using divs to simulate interactive elements like options/radio buttons, native keyboard navigation is lost. ARIA attributes (`role="radiogroup"`, `role="radio"`, `aria-checked`) alone do not provide keyboard support.
+**Action:** When implementing custom interactive options, ensure full accessibility by adding `tabindex="0"`, capturing `keydown` events for 'Enter' and 'Space' keys to replicate selection logic, and providing clear visual cues using `:focus-visible` pseudo-class rather than generic `:focus` to provide better UX for mouse users.
