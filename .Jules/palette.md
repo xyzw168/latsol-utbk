@@ -1,0 +1,3 @@
+## 2026-04-02 - Custom Radio Button Accessibility
+**Learning:** When building custom option select elements (like quiz choices) that act as radio buttons, using generic `<div>`s requires manual implementation of keyboard accessibility and ARIA roles. You must explicitly set `role="radiogroup"` on the container and `role="radio"`, `tabindex="0"`, and dynamic `aria-checked` states on the options, as well as handle `Space` and `Enter` keys to emulate native `<input type="radio">` behavior.
+**Action:** Always verify that custom form-like controls are fully navigable and selectable using only the keyboard, and that they communicate their state properly to screen readers via appropriate ARIA roles and attributes.
