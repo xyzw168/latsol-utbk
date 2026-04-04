@@ -1,0 +1,3 @@
+## 2024-04-04 - Keyboard Accessibility for DIV-based Options
+**Learning:** Using `<div>` elements for interactive components (like quiz options) requires manual implementation of keyboard semantics. Simply adding an `onclick` handler leaves keyboard users unable to select options.
+**Action:** Always ensure custom interactive elements have a valid `role` (e.g., `radio`), an appropriate `tabindex` (`0`), state attributes (`aria-checked`), and a `keydown` listener that handles 'Enter' and 'Space' (preventing default scroll on 'Space').
