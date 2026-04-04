@@ -49,6 +49,9 @@
         }
         .day-link:hover { color: var(--accent); background: var(--bg-color); }
 
+        /* Accessibility */
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
         /* Main Area */
         main { flex: 1; padding: 2.5rem; display: flex; flex-direction: column; align-items: center; position: relative; }
         header { width: 100%; max-width: 750px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
@@ -100,7 +103,7 @@
         <div id="quiz-ui" class="quiz-card" style="display: none;">
             <span class="q-meta" id="q-meta">Soal 1</span>
             <div class="q-text" id="q-text"></div>
-            <div class="options" id="options-box"></div>
+            <div class="options" id="options-box" role="radiogroup" aria-label="Pilihan jawaban"></div>
             <button class="btn btn-primary" id="action-btn" disabled onclick="handleAction()">Cek Jawaban</button>
             
             <div class="pembahasan" id="pembahasan-box">
@@ -223,14 +226,30 @@ function renderQuestion() {
     q.pilihan.forEach((p, i) => {
         const div = document.createElement('div');
         div.className = 'option';
+        div.setAttribute('role', 'radio');
+        div.setAttribute('tabindex', '0');
+        div.setAttribute('aria-checked', 'false');
         div.innerText = p;
-        div.onclick = () => {
+
+        const selectOption = () => {
             if(isChecking) return;
-            document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+            box.querySelectorAll('.option').forEach(el => {
+                el.classList.remove('selected');
+                el.setAttribute('aria-checked', 'false');
+            });
             div.classList.add('selected');
+            div.setAttribute('aria-checked', 'true');
             selectedIdx = i;
             document.getElementById('action-btn').disabled = false;
         };
+
+        div.onclick = selectOption;
+        div.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectOption();
+            }
+        });
         box.appendChild(div);
     });
 }
