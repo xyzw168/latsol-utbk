@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive quiz options require full ARIA and keyboard support
+**Learning:** Custom interactive elements (like `div`s functioning as radio buttons) require explicit ARIA roles (`role="radio"`, container with `role="radiogroup"`), `tabindex="0"`, `aria-checked` states, and custom `keydown` event handlers to be accessible via keyboard and screen readers.
+**Action:** When building or modifying custom interactive options, ensure they implement full ARIA properties, are keyboard focusable, and listen for `Enter` and `Space` key presses to simulate clicks. Also provide distinct `:focus-visible` styles so keyboard users can see where they are.
