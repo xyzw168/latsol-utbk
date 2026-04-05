@@ -1,0 +1,3 @@
+## 2023-10-24 - Accessible Custom Radio Buttons
+**Learning:** When using custom `div`-based interactive elements instead of native form elements (like radio buttons for quiz options), it is critical to implement complete keyboard accessibility: adding `tabindex="0"`, `role="radio"`, `aria-checked`, a `role="radiogroup"` wrapper, and explicit `keydown` listeners for Enter/Space keys. Users relying on keyboard navigation cannot interact with `onclick`-only custom components.
+**Action:** Always verify keyboard focus (`:focus-visible` styles) and interaction patterns (Enter/Space) when styling custom selection components. Prefer native `<input type="radio">` when possible, but if using `div`s, ensure ARIA and keyboard handling are comprehensive.
