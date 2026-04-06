@@ -66,6 +66,7 @@
         .option.selected { border-color: var(--accent); background: rgba(79, 70, 229, 0.08); }
         .option.correct { border-color: var(--success); color: var(--success); background: rgba(16, 185, 129, 0.08); }
         .option.wrong { border-color: var(--danger); color: var(--danger); background: rgba(239, 68, 68, 0.08); }
+        .option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
         .btn { padding: 14px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; width: 100%; font-family: 'Inter'; transition: 0.2s; margin-top: 2rem; }
         .btn-primary { background: var(--accent); color: white; }
@@ -100,7 +101,7 @@
         <div id="quiz-ui" class="quiz-card" style="display: none;">
             <span class="q-meta" id="q-meta">Soal 1</span>
             <div class="q-text" id="q-text"></div>
-            <div class="options" id="options-box"></div>
+            <div class="options" id="options-box" role="radiogroup"></div>
             <button class="btn btn-primary" id="action-btn" disabled onclick="handleAction()">Cek Jawaban</button>
             
             <div class="pembahasan" id="pembahasan-box">
@@ -223,14 +224,31 @@ function renderQuestion() {
     q.pilihan.forEach((p, i) => {
         const div = document.createElement('div');
         div.className = 'option';
+        div.setAttribute('role', 'radio');
+        div.setAttribute('tabindex', '0');
+        div.setAttribute('aria-checked', 'false');
         div.innerText = p;
-        div.onclick = () => {
+
+        const selectOption = () => {
             if(isChecking) return;
-            document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+            box.querySelectorAll('.option').forEach(el => {
+                el.classList.remove('selected');
+                el.setAttribute('aria-checked', 'false');
+            });
             div.classList.add('selected');
+            div.setAttribute('aria-checked', 'true');
             selectedIdx = i;
             document.getElementById('action-btn').disabled = false;
         };
+
+        div.onclick = selectOption;
+        div.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                selectOption();
+            }
+        };
+
         box.appendChild(div);
     });
 }
@@ -248,7 +266,7 @@ function renderQuestion() {
         function checkAnswer() {
             isChecking = true;
             const q = questions[currentIdx];
-            const opts = document.querySelectorAll('.option');
+            const opts = document.getElementById('options-box').querySelectorAll('.option');
 
             if (selectedIdx === q.kunci) {
                 opts[selectedIdx].classList.add('correct');
