@@ -1,0 +1,3 @@
+## 2023-10-27 - Custom Radio Button Accessibility
+**Learning:** When using `div` elements to simulate radio buttons, `tabindex="0"` allows them to be focusable, but it does not automatically bind the `Space` or `Enter` keys to selection actions like a native `<input type="radio">` would. Additionally, `aria-checked` must be manually toggled to inform screen readers of the state change.
+**Action:** Always include a `keydown` event listener for `Space` (with `e.preventDefault()` to stop scrolling) and `Enter` to trigger the same selection logic as the `click` handler. Update `aria-checked` dynamically alongside visual CSS classes (like `.selected`).
