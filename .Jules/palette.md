@@ -1,0 +1,3 @@
+## 2026-04-07 - Add Keyboard Accessibility for Options
+**Learning:** For interactive list options built with `div` elements, adding `role="radio"`, `tabindex="0"`, and `aria-checked` enables semantic keyboard navigation. Using `:focus-visible` with `outline` is crucial for accessibility without impacting mouse/touch users. Custom `keydown` event listeners for `Enter` and `Space` are required to duplicate `click` behavior for these non-native interactive elements.
+**Action:** When creating custom interactive elements, always implement native button/input accessibility patterns using ARIA roles and keyboard event handlers.
