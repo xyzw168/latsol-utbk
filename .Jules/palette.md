@@ -1,0 +1,3 @@
+## 2023-10-27 - Implement Keyboard Accessibility for custom Radio Buttons
+**Learning:** In this application, quiz options are custom-built using `<div>` elements instead of semantic `<input type="radio">`. This means they inherently lack accessibility features like focusability, roles, and keyboard interactions.
+**Action:** Always verify custom interactive components (like divs acting as buttons/radios) have appropriate ARIA attributes (`role="radio"`, `aria-checked`), `tabindex="0"` for focusability, and implement `keydown` handlers for `Enter` and `Space` (preventing default scrolling behavior on `Space`). Additionally, ensure `:focus-visible` styling is present for keyboard users.
