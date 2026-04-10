@@ -1,0 +1,3 @@
+## 2026-04-10 - Keyboard Accessibility for Custom Radio Elements
+**Learning:** When making custom div-based options keyboard accessible (ARIA role radio), it is important to prevent default browser behavior for the Spacebar key (scrolling) during selection, while still permitting standard Enter key execution, ensuring smooth focus states via :focus-visible. Playwright testing for focus states also requires simulating real key presses (Tab) rather than relying on script evaluation focus().
+**Action:** Always add e.preventDefault() for Space when handling keyboard interactions for custom select/radio components, use :focus-visible for outline styles to distinguish keyboard users from mouse clicks, and simulate actual Tab presses in Playwright validation.
