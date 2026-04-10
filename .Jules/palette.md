@@ -1,0 +1,4 @@
+
+## 2024-05-24 - Custom Radiogroup Keyboard Navigation
+**Learning:** Standard interactive elements like `div` used as options (e.g., in a quiz) fail accessibility checks if they lack semantic meaning and keyboard focus. Implementing `role="radiogroup"` on the container and `role="radio"`, `tabindex="0"`, and `aria-checked` on the options creates a compliant experience. However, native keyboard behaviors for radios (arrows vs space/enter) must be explicitly managed. Using `e.preventDefault()` on the Spacebar keydown event is crucial to prevent the default browser behavior of scrolling down the page.
+**Action:** When implementing custom selection components, ensure the parent container acts as the group context. Use standard focus outlines (`:focus-visible`) rather than `hover` styling alone, and always intercept Space keypresses on custom controls to stop unwanted scrolling while allowing selection.
