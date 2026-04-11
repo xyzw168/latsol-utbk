@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Interactive Element Accessibility
+**Learning:** When using custom `div` elements instead of native `<input type="radio">` for interactive quiz options, they are entirely invisible to keyboard and screen reader users by default. They require explicit ARIA roles (`role="radiogroup"`, `role="radio"`), focus management (`tabindex="0"`), state management (`aria-checked`), and custom keyboard event handlers (listening for `Space` and `Enter`) to achieve basic accessibility.
+**Action:** Always prefer native HTML elements for interaction. If custom elements must be used for design reasons, ensure a full suite of ARIA attributes and keyboard event listeners are implemented to mimic native behavior.
