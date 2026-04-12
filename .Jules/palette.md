@@ -1,0 +1,3 @@
+## 2025-02-20 - Custom Radio Group Accessibility
+**Learning:** Re-implementing native `input type="radio"` behavior on custom `div` elements requires setting `tabindex="0"`, explicitly toggling `aria-checked` true/false, and intercepting keyboard events (Enter and Space). Crucially, capturing Space keypresses on custom interactive elements requires explicit `e.preventDefault()` to prevent the browser from scrolling down the page.
+**Action:** When creating custom selectable options, always ensure keyboard accessibility by mimicking native radio/checkbox behaviors (roles, aria-checked, keyboard handlers), specifically preventing default scroll behavior on Space.
