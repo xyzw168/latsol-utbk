@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Radiogroup Keyboard Navigation
+**Learning:** When creating custom radiogroups (like quiz options), adding `tabindex="0"` and mapping the `Space` key to selection introduces a bug where pressing Space also scrolls the page down.
+**Action:** Always include `e.preventDefault()` within the keydown event handler for the Space key (`e.key === ' '`) to capture the keypress exclusively for selection and prevent native browser scroll behavior.
