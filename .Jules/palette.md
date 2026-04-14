@@ -1,0 +1,3 @@
+## 2024-05-19 - Keyboard Accessibility for Custom Radio Buttons
+**Learning:** Using `div` elements for quiz options looks good, but breaks default keyboard navigation and screen reader functionality compared to native radio inputs. If relying on divs, you must explicitly provide `.focus-visible` styles, ARIA roles (`radiogroup`, `radio`, `aria-checked`), and add `keydown` handlers for Enter and Space keys (preventing default scroll on Space).
+**Action:** Always verify custom interactive components have equivalent keyboard access and semantic ARIA attributes instead of just relying on mouse events.
