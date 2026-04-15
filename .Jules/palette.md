@@ -1,0 +1,3 @@
+## 2025-04-15 - Custom Radio Button Accessibility
+**Learning:** When using `div` elements to construct custom radio options, adding `role="radio"`, `tabindex="0"`, `aria-checked`, and `role="radiogroup"` correctly handles semantics. However, to handle interaction, explicitly attaching `keydown` listeners for `Enter` and `Space` (with `e.preventDefault()` for Space to prevent page scroll) and `:focus-visible` CSS is essential for full keyboard functionality and visibility without negatively impacting mouse users.
+**Action:** Always implement explicit keyboard handlers (`Enter` and `Space`) and `:focus-visible` styles when converting non-interactive elements into custom inputs.
