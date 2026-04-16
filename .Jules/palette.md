@@ -1,0 +1,3 @@
+## 2024-04-16 - Custom Option Accessibility
+**Learning:** When building custom interactive components like quiz options, relying solely on `div` with an `onclick` handler excludes keyboard/screen reader users.
+**Action:** Always complement clickable `div`s with ARIA roles (e.g., `role="radio"` inside `role="radiogroup"`), keyboard focus capability (`tabindex="0"`), state management (`aria-checked`), and keydown event listeners (`Enter`/`Space`) to map keyboard interactions correctly. Use `:focus-visible` to style focus without impacting mouse users.
