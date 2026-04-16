@@ -1,0 +1,3 @@
+## 2026-04-16 - [Custom Radio Button Accessibility]
+**Learning:** When using standard `div` elements as custom radio buttons (like the `.option` elements here), it's critical to manually implement full keyboard accessibility and ARIA roles. This includes adding `role="radio"`, `tabindex="0"`, and managing `aria-checked` states dynamically via JavaScript. Furthermore, providing a clear `:focus-visible` outline ensures keyboard users can track their position without confusing mouse users.
+**Action:** Always ensure that custom interactive elements mimic the semantic structure, keyboard operability (e.g., Space/Enter to select), and focus visibility of their native HTML counterparts.
