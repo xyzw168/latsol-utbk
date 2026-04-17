@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Radio Group Accessibility
+**Learning:** When building custom interactive components that function like radio buttons (e.g., quiz options), it's critical to provide proper semantic context and keyboard navigability since they lack native browser behaviors. Users navigating via keyboard need predictable feedback (`:focus-visible`) and interaction (Space/Enter).
+**Action:** Always map custom grouped single-select elements to ARIA `radiogroup`/`radio` roles, manage `tabindex="0"`, toggle `aria-checked` dynamically, and implement `keydown` handlers (preventing default scrolling for the Space key). Ensure a visual focus indicator using `:focus-visible`.
