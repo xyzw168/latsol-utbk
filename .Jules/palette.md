@@ -1,0 +1,3 @@
+## 2026-04-18 - [Keyboard Accessible Custom Radios]
+**Learning:** When using `div` elements to simulate radio buttons, relying purely on `div.onclick` ignores keyboard users. Standard `radio` inputs handle keyboard out-of-the-box, but custom implementations require adding `role="radio"`, `tabindex="0"`, dynamic toggling of `aria-checked`, and explicit `keydown` handlers for Space and Enter keys (preventing Space scroll).
+**Action:** Always ensure that custom interactive `div` containers acting like radio groups or checkboxes have explicit roles (`role="radiogroup"` / `role="radio"`), `aria-checked` states manually synchronized with visual states, and dedicated key down handlers.
