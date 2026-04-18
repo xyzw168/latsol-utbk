@@ -1,0 +1,3 @@
+## 2026-04-18 - Keyboard Accessibility for Div-based Radio Groups
+**Learning:** When implementing custom interactive elements like radio buttons using `<div>`s, it's critical to provide keyboard support (`tabindex`, `keydown` for Enter/Space), visual focus states (`:focus-visible`), and proper ARIA semantics (`role="radiogroup"`, `role="radio"`, and dynamic `aria-checked`) so screen reader and keyboard-only users can perceive and operate the control natively.
+**Action:** Always add ARIA roles, states, and keyboard event handlers (remembering to use `e.preventDefault()` on Spacebar to prevent page scrolling) to non-native interactive components.
