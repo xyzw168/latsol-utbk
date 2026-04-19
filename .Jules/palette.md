@@ -1,0 +1,3 @@
+## 2026-04-19 - Custom Radio Group Accessibility
+**Learning:** The `#options-box` and `.option` elements function as a radio group but lack native semantics and keyboard accessibility. Screen reader users would not know they are part of a group, and keyboard users could not tab to or select them without specific implementations.
+**Action:** When building custom option selections, always implement the `role="radiogroup"` on the container and `role="radio"` on individual options. Additionally, implement keyboard selection using `keydown` events for 'Enter' and 'Space', ensuring `e.preventDefault()` is used on 'Space' to prevent page scroll. Use `aria-checked` and `tabindex="0"` to make the elements focusable and communicate state correctly.
