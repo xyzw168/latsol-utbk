@@ -1,0 +1,3 @@
+## 2024-05-23 - Dynamic Radio Group Accessibility
+**Learning:** When building custom radio button interfaces in dynamic quiz applications, using `div` elements requires explicit ARIA roles (`role="radiogroup"` on container, `role="radio"` on options), state management (`aria-checked`), and custom keyboard navigation (`tabindex="0"`, `Enter`/`Space` support with `e.preventDefault()`) to ensure screen readers and keyboard users can successfully navigate and select options.
+**Action:** Always implement full ARIA attributes and keyboard event handlers when replacing native input elements with custom accessible alternatives. Scope DOM queries to parent containers to minimize traversal overhead.
