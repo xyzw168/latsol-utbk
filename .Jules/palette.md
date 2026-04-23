@@ -1,0 +1,3 @@
+## 2026-04-23 - Custom Radio Button Accessibility
+**Learning:** Custom interactive elements representing radio buttons require `role="radio"`, `tabindex="0"`, `aria-checked` attributes, and `keydown` event listeners for `Enter` and `Space` keys (with `e.preventDefault()` for `Space` to prevent scrolling). A parent wrapper also requires `role="radiogroup"` to correctly group them for screen readers. Global `:focus-visible` CSS rules are critical for keyboard navigation visibility.
+**Action:** When creating or modifying custom selection controls, explicitly add these ARIA and keyboard event attributes to ensure full keyboard navigation and screen reader support.
