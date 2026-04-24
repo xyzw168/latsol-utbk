@@ -1,0 +1,3 @@
+## 2026-04-24 - Custom Radio Group Accessibility for Quiz Options
+**Learning:** When building custom interactive lists like quiz options, relying solely on `div` click handlers breaks screen reader and keyboard accessibility. Users cannot tab to the options or understand their state. Using native radio buttons is preferred, but for heavily customized visual designs, the ARIA `role="radiogroup"` (on container) and `role="radio"` (on options) pattern is necessary.
+**Action:** When creating custom selectable options, ensure the container has `role="radiogroup"` and `aria-labelledby`, and the individual options have `role="radio"`, `tabindex="0"`, `aria-checked` toggling, and keyboard event listeners for Space/Enter.
