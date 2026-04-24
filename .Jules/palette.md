@@ -1,0 +1,3 @@
+## 2024-04-24 - Custom Radio Options Keyboard Accessibility
+**Learning:** Creating a custom radiogroup required comprehensive ARIA tagging (`role="radiogroup"`, `role="radio"`, `aria-checked`, `tabindex="0"`) but also manual keyboard event handling to be fully accessible. Specifically, using the 'Space' key inside `onkeydown` requires `e.preventDefault()` to stop the default browser behavior of scrolling the page down.
+**Action:** Always implement full ARIA states and explicit keydown handlers (handling default scrolling actions) when creating custom keyboard-navigable selection components instead of native `<input type="radio">` tags.
