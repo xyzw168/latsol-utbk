@@ -1,0 +1,3 @@
+## 2024-05-18 - Making Custom Options Keyboard-Accessible
+**Learning:** When turning standard `<div>` elements into interactive lists (like quiz options), mouse `click` handlers are not enough. Without proper ARIA roles (`radiogroup`/`radio`), `tabindex="0"`, and keyboard event handlers (for Enter/Space), users relying on keyboards or screen readers are completely blocked from selecting options.
+**Action:** Always pair `onclick` with `onkeydown` (handling Space/Enter) for custom interactive elements, ensure `tabindex="0"` is present for focusability, add explicit `:focus-visible` styles so keyboard users know what is focused, and use `aria-checked` to communicate state to assistive technologies.
