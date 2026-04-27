@@ -1,0 +1,3 @@
+## 2024-05-18 - Added keyboard accessibility to interactive div options
+**Learning:** When using `div` elements as custom radio buttons, they inherently lack keyboard accessibility. We must explicitly set `tabindex="0"`, `role="radio"`, and `aria-checked` states. Furthermore, `keydown` event listeners for `Enter` and `Space` are required for selection, and `e.preventDefault()` on `Space` is crucial to prevent the default browser behavior of scrolling down the page when a user attempts to select an option.
+**Action:** Always provide custom interactive elements with keyboard equivalent actions (Enter/Space) and ensure default actions (like Space scrolling) are prevented so focus remains visually grounded.
