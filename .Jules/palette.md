@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility and Keyboard Support for Custom Radio Buttons
+**Learning:** Custom interactive elements like quiz options acting as radio buttons need explicit ARIA roles (`radiogroup`, `radio`), `tabindex`, and keyboard event handlers (Enter/Space) to be fully accessible. Preventing default action on Space is crucial to avoid unwanted page scrolling.
+**Action:** Always implement `role="radio"`, `aria-checked`, `tabindex="0"`, and `keydown` handlers (with `e.preventDefault()` for Space) when creating custom radio button groups. Scoped DOM queries improve performance and isolate component behavior.
