@@ -1,0 +1,3 @@
+## 2023-10-27 - Keyboard Accessibility for Custom Radio Buttons
+**Learning:** Custom interactive elements (like the `.option` quiz buttons) completely bypass standard keyboard navigation and screen reader parsing unless explicitly handled. Specifically, simulating `:focus-visible` visually isn't enough; the `keydown` event listener must strictly handle `e.preventDefault()` for the Space key to prevent unintended page scrolling during option selection.
+**Action:** Whenever converting a custom `div` into an interactive selection element, immediately assign `role="radio"`, initialize `aria-checked="false"`, add `tabindex="0"`, and map both `Enter` and `Space` keys to the click handler logic.
