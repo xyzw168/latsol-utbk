@@ -1,0 +1,3 @@
+## 2024-04-29 - Accessibility for Custom UI Components (Quiz Options)
+**Learning:** When building custom interactive components like quiz options using standard `div` elements, they do not inherently support keyboard navigation or screen readers. Relying solely on `onclick` handlers creates significant accessibility barriers for users who cannot use a mouse.
+**Action:** Always enhance custom interactive elements with appropriate ARIA roles (e.g., `role="radio"`, `aria-checked`), make them focusable (`tabindex="0"`), provide clear visual focus indicators (`:focus-visible`), and implement explicit keyboard event listeners (handling `Enter` and `Space`, ensuring to prevent default scrolling for `Space`) to mirror mouse interaction logic.
