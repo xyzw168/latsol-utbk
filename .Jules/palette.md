@@ -1,0 +1,3 @@
+## 2024-05-14 - Accessible Quiz Options
+**Learning:** Custom interactive elements (like quiz options using `div` tags) need explicit keyboard support (`tabindex="0"`, `keydown` events for Enter/Space), ARIA roles (`role="radiogroup"`, `role="radio"`), and visual focus states (`:focus-visible`) to be accessible to screen readers and keyboard-only users. Using `e.preventDefault()` on the Space key is necessary to stop the page from scrolling when an option is selected.
+**Action:** Always add ARIA roles, `tabindex="0"`, `keydown` handlers for Enter/Space, and `:focus-visible` styles when building custom selection interfaces using non-semantic elements.
