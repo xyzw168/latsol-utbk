@@ -1,0 +1,3 @@
+## 2026-05-03 - Improve Interactive Quiz Options Accessibility
+**Learning:** Custom interactive elements (like `.option` divs acting as radio buttons) completely break screen reader and keyboard accessibility if they only rely on `onclick`. Using `:focus-visible` ensures keyboard focus doesn't disrupt mouse users, but elements must explicitly have `tabindex="0"`, `role="radio"`, and proper `keydown` event handling (e.g. Enter and Space, with Space needing `e.preventDefault()`) to be fully usable.
+**Action:** Always verify that custom interactive components (like cards or options acting as buttons/radios) implement native HTML equivalent roles and keyboard events alongside visual cues.
