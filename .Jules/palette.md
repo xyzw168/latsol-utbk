@@ -1,0 +1,3 @@
+## 2026-05-05 - [Keyboard Accessibility for Custom Radio Buttons]
+**Learning:** When using `div` elements to simulate radio options, relying solely on CSS pseudo-classes or basic click handlers completely breaks keyboard navigation for screen reader and keyboard-only users.
+**Action:** When implementing custom radio options, ensure they are wrapped in a container with `role="radiogroup"`. Each option must have `role="radio"`, `tabindex="0"`, dynamic `aria-checked` toggling, and explicit keyboard event listeners (handling 'Space' and 'Enter' with `e.preventDefault()` for Space to prevent page scrolling) to maintain full accessibility.
