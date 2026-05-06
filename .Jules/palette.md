@@ -1,0 +1,3 @@
+## 2023-10-27 - Keyboard Accessibility for Custom Div Radio Groups
+**Learning:** When using `div` elements to simulate radio buttons, adding `role="radio"`, `tabindex="0"`, and dynamic `aria-checked` attributes is crucial for screen readers. Furthermore, a `keydown` event listener for 'Enter' and 'Space' (using `e.preventDefault()` to stop page scroll on Space) ensures full keyboard parity with native `<input type="radio">` elements.
+**Action:** When creating custom interactive options (like quiz answers), strictly apply `role`, `tabindex`, `aria-*` state properties, and keyboard event listeners to maintain accessibility standards without breaking design.
