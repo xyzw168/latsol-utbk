@@ -63,6 +63,7 @@
             cursor: pointer; font-weight: 500; transition: 0.2s; position: relative;
         }
         .option:hover { border-color: var(--accent); background: rgba(79, 70, 229, 0.02); }
+        .option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
         .option.selected { border-color: var(--accent); background: rgba(79, 70, 229, 0.08); }
         .option.correct { border-color: var(--success); color: var(--success); background: rgba(16, 185, 129, 0.08); }
         .option.wrong { border-color: var(--danger); color: var(--danger); background: rgba(239, 68, 68, 0.08); }
@@ -100,7 +101,7 @@
         <div id="quiz-ui" class="quiz-card" style="display: none;">
             <span class="q-meta" id="q-meta">Soal 1</span>
             <div class="q-text" id="q-text"></div>
-            <div class="options" id="options-box"></div>
+            <div class="options" id="options-box" role="radiogroup" aria-labelledby="q-text"></div>
             <button class="btn btn-primary" id="action-btn" disabled onclick="handleAction()">Cek Jawaban</button>
             
             <div class="pembahasan" id="pembahasan-box">
@@ -224,13 +225,30 @@ function renderQuestion() {
         const div = document.createElement('div');
         div.className = 'option';
         div.innerText = p;
-        div.onclick = () => {
+        div.setAttribute('role', 'radio');
+        div.setAttribute('tabindex', '0');
+        div.setAttribute('aria-checked', 'false');
+
+        const selectOption = () => {
             if(isChecking) return;
-            document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+            box.querySelectorAll('.option').forEach(el => {
+                el.classList.remove('selected');
+                el.setAttribute('aria-checked', 'false');
+            });
             div.classList.add('selected');
+            div.setAttribute('aria-checked', 'true');
             selectedIdx = i;
             document.getElementById('action-btn').disabled = false;
         };
+
+        div.onclick = selectOption;
+        div.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === ' ') e.preventDefault(); // Prevent scrolling
+                selectOption();
+            }
+        };
+
         box.appendChild(div);
     });
 }
