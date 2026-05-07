@@ -1,0 +1,3 @@
+## 2024-05-07 - Improved keyboard accessibility for quiz options
+**Learning:** In a single-page app where `div` elements act as selectable items, adding `tabindex="0"`, `role="radio"`, and an `onkeydown` handler for "Enter" and "Space" (with `e.preventDefault()` to stop page scrolling) significantly improves keyboard navigation. Using `.option:focus-visible` ensures clear visual feedback for keyboard users without affecting mouse interactions.
+**Action:** Always verify that interactive elements mapped to non-semantic tags have appropriate ARIA roles, `tabindex`, and keyboard event handlers. Ensure the Space key uses `preventDefault()` to avoid unintended scrolling. Use `:focus-visible` for focus styling.
