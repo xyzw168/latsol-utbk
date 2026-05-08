@@ -1,0 +1,3 @@
+## 2024-05-08 - Accessible Custom Options
+**Learning:** Custom 'div' based interactive elements like '.option' options require explicit 'role="radio"', 'tabindex="0"', and 'aria-checked' toggling. Also, adding a keydown listener for 'Enter' and 'Space' with 'e.preventDefault()' for 'Space' ensures reliable keyboard activation without page scrolling.
+**Action:** When encountering non-native form elements (like div-based options), proactively verify keyboard and screen reader accessibility, adding necessary ARIA and keyboard event handling.
