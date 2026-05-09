@@ -1,0 +1,3 @@
+## 2026-05-09 - [Quiz Options Keyboard Accessibility]
+**Learning:** Custom interactive elements like quiz options ('.option') require manual keyboard accessibility management. Simply attaching a click listener is not enough; we must provide visual focus indicators (':focus-visible'), appropriate ARIA roles ('role="radio"' and 'radiogroup'), manage 'tabindex="0"' to make them focusable, and manually listen for 'keydown' events (Enter/Space) to replicate click behavior for screen readers and keyboard users.
+**Action:** When creating non-native interactive components (like a custom radio group), always apply the holy trinity of accessibility: visual focus states, ARIA roles/states, and explicit keyboard event handling for Enter and Space keys.
