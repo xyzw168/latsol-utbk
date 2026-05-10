@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Div Radio Group Keyboard Accessibility
+**Learning:** When building custom radio group components using `div` elements, adding `:focus-visible` and updating ARIA states is not enough for full accessibility. Interactive options (like `.option` in `#options-box`) must explicitly support keyboard events (`keydown` for `Enter` and `Space`) to replicate native radio button behavior, and `Space` key actions must be prevented (`e.preventDefault()`) to avoid unintended page scrolling.
+**Action:** Always map `Space` and `Enter` key events to the `click` handler for interactive non-button elements, and explicitly manage `aria-checked` and `role="radio"` states dynamically.
