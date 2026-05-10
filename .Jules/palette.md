@@ -1,0 +1,3 @@
+## 2026-05-10 - Custom Keyboard Accessibility for Quiz Options
+**Learning:** For non-native interactive elements (like `div`s used as selectable quiz options), adding `role="radiogroup"` to the container and `role="radio"`, `tabindex="0"`, and `aria-checked` to the items is essential for screen reader support. Keyboard navigation requires explicit `keydown` listeners for Enter and Space to toggle selection, as well as `e.preventDefault()` on Space to avoid page scrolling.
+**Action:** When implementing custom interactive elements like selectable options, always ensure proper ARIA attributes (`role`, `aria-checked`) and explicit `keydown` event listeners for 'Enter' and ' ' (Space) are included, accompanied by distinct `:focus-visible` styling.
