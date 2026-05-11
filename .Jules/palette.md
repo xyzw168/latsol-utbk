@@ -1,0 +1,5 @@
+## 2025-01-28 - Implement Keyboard Navigation & ARIA for Custom Quiz Options
+
+**Learning:** When building custom interactive components like quiz options using basic generic elements (`<div>`), keyboard users and screen readers cannot inherently use them. Simulated `radiogroup` logic using `role="radio"`, `aria-checked`, and `tabindex="0"` provides semantic meaning and focusability. Also, handling 'Enter' and 'Space' keypresses (preventing default scroll on Space) is essential to fully replicate native `<input type="radio">` UX.
+
+**Action:** Whenever replacing native form controls with custom styled generic elements, always add equivalent roles (`role="radiogroup"` & `role="radio"`), manage ARIA state (`aria-checked`), provide focusability (`tabindex="0"`), style focus states distinctly (`:focus-visible`), and map standard keyboard interaction keys (`Enter` / `Space`).
