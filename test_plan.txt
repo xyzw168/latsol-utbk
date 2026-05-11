@@ -1,0 +1,27 @@
+1. Implement accessibility improvements in `index.html` for quiz options.
+   - Add `.option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }` to the `<style>` section.
+   - Add `role="radiogroup"` and `aria-labelledby="q-text"` to the `#options-box` element.
+   - Add `role="radio"`, `tabindex="0"`, and `aria-checked="false"` attributes to the dynamically created `.option` elements.
+   - Update the option selection logic to toggle `aria-checked` states properly.
+   - Add a `keydown` event listener for 'Enter' and 'Space' (using `e.preventDefault()`) to trigger option selection via keyboard.
+   - Scope the query selector for clearing selected options to the specific `box` parent container instead of the global `document` document.
+2. Verify changes made to `index.html`.
+   - Read `index.html` to ensure the modifications match the intended accessibility improvements exactly.
+3. Call `frontend_verification_instructions` tool.
+   - Retrieve instructions for writing a Playwright script to verify frontend web applications.
+4. Start the local background server.
+   - Execute `python3 -m http.server 8000 &` to serve the application for Playwright.
+5. Write the Playwright script.
+   - Create a test script (e.g., `/home/jules/verification/test_a11y.py`) that uses Playwright to navigate to a quiz, interact with options using Tab and Space/Enter keys, verify the focus state, selection classes, and aria attributes.
+6. Execute the Playwright script.
+   - Run the script and capture the screenshot and video in `/home/jules/verification/`.
+7. Kill the background server.
+   - Stop the local server using `kill $(lsof -t -i :8000)`.
+8. Call `frontend_verification_complete` tool.
+   - Submit the paths to the captured screenshot and video.
+9. Clean up temporary files.
+   - Delete any temporary testing artifacts (like the standalone Playwright script) to maintain proper git hygiene.
+10. Complete pre-commit steps.
+   - Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
+11. Submit the pull request.
+   - Run `submit` with a descriptive branch name, PR title, and description emphasizing the micro-UX enhancements and accessibility improvements.
