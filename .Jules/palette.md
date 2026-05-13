@@ -1,0 +1,3 @@
+## 2026-05-13 - Custom Radio Button Accessibility
+**Learning:** Custom interactive elements (like `.option` divs functioning as radio buttons) require comprehensive ARIA implementations (`role="radio"`, `role="radiogroup"`, `aria-checked`, `aria-labelledby`, `tabindex="0"`) and specific JavaScript event handling for keyboard interactions (`keydown` for Space/Enter) to be fully accessible. Native `<input type="radio">` is generally preferred when possible to avoid this manual overhead.
+**Action:** Always ensure that custom interactive components not only look correct but also natively respond to keyboard events and expose the correct semantic states to assistive technologies. When possible, refactor custom inputs to use styled native HTML input elements.
