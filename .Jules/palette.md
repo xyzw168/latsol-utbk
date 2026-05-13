@@ -1,0 +1,3 @@
+## 2026-05-13 - Quiz Option Custom Keyboard Accessibility
+**Learning:** Interactive div elements functioning as custom radio buttons (`.option`) within this application completely lack native keyboard support and structural semantics out of the box.
+**Action:** Always assign `role="radiogroup"` to the parent container (`#options-box`) with proper `aria-labelledby`, and equip each interactive child div with `role="radio"`, `tabindex="0"`, dynamic `aria-checked` attributes, `:focus-visible` styling, and keydown listeners mapping 'Space' (`e.preventDefault()`) and 'Enter' to the selection logic to ensure fully inclusive keyboard navigation.
