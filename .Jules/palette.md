@@ -1,0 +1,3 @@
+## 2024-05-14 - Keyboard accessibility for custom radio options
+**Learning:** Found an accessibility issue pattern specific to this app where interactive options were rendered as standard `<div>`s, stripping them of standard keyboard and screen-reader accessibility for interactive inputs.
+**Action:** Implemented custom accessibility by scoping `role="radiogroup"` and `aria-labelledby` to the parent container, adding `role="radio"`, `tabindex="0"`, and `aria-checked` attributes to the children, and binding `keydown` handlers mapping 'Enter' and 'Space' (using `preventDefault` to stop scrolling) to enable full keyboard selection and screen-reader context.
