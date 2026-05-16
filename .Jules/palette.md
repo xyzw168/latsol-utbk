@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Interactive Elements Keyboard Accessibility
+**Learning:** In this project, custom interactive elements like `.option` in the quiz use basic `div` tags. They lack native keyboard navigation and accessibility attributes, which is a common issue with custom UI components. Setting focus states with `:focus-visible` and handling `keydown` events (Space/Enter) correctly is necessary.
+**Action:** Always add appropriate ARIA roles (`role="radio"`, `role="radiogroup"`), `tabindex`, keyboard event listeners (`keydown` for Space/Enter, with `preventDefault` for Space to prevent scrolling), and visual focus indicators (`:focus-visible`) to make custom interactive elements accessible.
