@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Custom Elements Keyboard Accessibility
+**Learning:** Custom interactive elements (like quiz options implemented as `div` elements instead of inputs or buttons) inherently lack keyboard focus and semantic meaning. Simply adding click handlers is insufficient for accessibility; they need explicit `role`, `tabindex`, and keyboard event handlers (like Enter and Space) to function properly for all users. Using Space to select options also requires preventing the default scrolling behavior.
+**Action:** Always ensure that any non-native interactive component created with `div` or `span` receives `role`, `tabindex="0"`, `aria-*` state properties where appropriate, and `keydown` listeners for Enter/Space, alongside `focus-visible` styling.
