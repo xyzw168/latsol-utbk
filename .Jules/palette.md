@@ -1,0 +1,3 @@
+## 2024-05-17 - Custom Radio Button Accessibility and Keyboard Events
+**Learning:** When making custom div elements act as radio buttons (`role="radio"`), standard mouse clicks aren't enough. They require custom keyboard event handling for 'Enter' and 'Space' keys, setting `tabindex="0"`, and properly managing the `aria-checked` attributes. Also, you must use `e.preventDefault()` for the Space key to stop the browser from scrolling the page when selecting an option.
+**Action:** When building or modifying custom interactive elements (like options/cards that act as inputs), always verify they implement `role`, `tabindex`, keyboard event listeners, and `aria-checked` states, rather than just relying on CSS class toggles and `onclick` events.
