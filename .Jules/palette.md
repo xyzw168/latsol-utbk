@@ -1,0 +1,3 @@
+## 2024-05-15 - Custom Radio Group Accessibility
+**Learning:** The quiz options (`.option` elements within `#options-box`) lacked keyboard accessibility and screen reader support because they are standard `div` elements visually styled as interactive buttons, violating custom control accessibility patterns.
+**Action:** Always implement the ARIA custom radio group pattern for interactive quiz options. Ensure the container has `role="radiogroup"` and `aria-labelledby`, and individual options use `role="radio"`, `tabindex="0"`, `aria-checked` toggling, and support keyboard interaction (Enter/Space) along with `:focus-visible` styles for visual focus feedback.
