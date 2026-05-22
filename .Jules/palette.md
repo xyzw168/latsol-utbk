@@ -1,0 +1,3 @@
+## 2025-05-22 - Custom Radiogroup Accessibility
+**Learning:** Interactive quiz options built with custom `div` elements require manual accessibility wiring, specifically custom `role="radiogroup"`/`role="radio"`, `aria-checked` states, and keydown listeners for Space and Enter to ensure full keyboard navigation support, alongside `:focus-visible` styles to replace browser default input focuses. Spacebar keydown events natively scroll the page and thus require `e.preventDefault()` to behave accurately like standard radios.
+**Action:** When working on interactive quizzes or choice selections, actively check for custom `div` implementations rather than native inputs and manually enforce the radiogroup accessibility and keyboard selection patterns.
