@@ -1,0 +1,3 @@
+## 2025-02-17 - Accessible Custom Radio Buttons
+**Learning:** In this project, custom quiz options are implemented using styled `div` elements instead of native `<input type="radio">`. While visually appealing, this pattern inherently lacks keyboard navigation and screen reader semantics.
+**Action:** When working with custom interactive elements, always ensure proper ARIA roles (`role="radiogroup"` on parent, `role="radio"` on children), keyboard focusability (`tabindex="0"`), accessible states (`aria-checked`), state synchronization, and explicit keyboard event listeners (Enter/Space) to recreate the expected native semantics and interactions.
