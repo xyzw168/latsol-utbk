@@ -1,0 +1,3 @@
+## 2024-05-15 - Custom Keyboard Accessibility on div-based options
+**Learning:** Interactive quiz options (.option elements) within the #options-box container implemented custom keyboard accessibility using role=radio, tabindex=0, aria-checked toggling, and keydown event listeners for Enter/Space keys (using `e.preventDefault()` for Space to prevent page scrolling). This makes div-based options accessible for keyboard users without needing default `<input type="radio">` elements which may be harder to style.
+**Action:** Always ensure custom interactive elements like these receive keyboard event listeners and ARIA roles alongside `tabindex` to behave like their native counterparts.
