@@ -1,0 +1,3 @@
+## 2026-05-27 - Keyboard Navigation & Screen Reader Support for Interactive Quiz Options
+**Learning:** Custom interactive elements (like custom quiz options rendered as divs) lack native accessibility features compared to standard form elements (like radio inputs). This causes screen readers to misinterpret them and keyboard users to be unable to navigate or select them.
+**Action:** When implementing custom selection components (e.g., custom radio groups), explicitly add ARIA roles (`radiogroup`, `radio`), attributes (`aria-labelledby`, `aria-checked`), and manage keyboard focus (`tabindex="0"`) along with keydown listeners for standard activation keys (Space and Enter) to ensure full accessibility parity with native controls.
