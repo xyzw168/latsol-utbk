@@ -1,0 +1,3 @@
+## 2026-05-28 - Custom Radio Group Accessibility
+**Learning:** Custom interactive elements representing radio buttons (like quiz options using `<div>`) completely lack semantic meaning and keyboard navigability out of the box. Screen readers rely on the parent having `role="radiogroup"` linked via `aria-labelledby`, and individual children having `role="radio"`, a roving or explicit `tabindex`, and dynamically updated `aria-checked` attributes.
+**Action:** Always ensure that custom interactive list selections implement the W3C ARIA radio group pattern (or a simplified functional equivalent for basic a11y) including keyboard interaction support (Space/Enter).
