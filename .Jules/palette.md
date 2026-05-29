@@ -1,0 +1,3 @@
+## 2024-05-20 - Custom Quiz Options Missing Semantics
+**Learning:** The quiz application utilizes custom `<div>` elements for multiple-choice options instead of native radio buttons, resulting in a complete lack of keyboard navigation (tab focus, enter/space selection) and screen reader semantics (radiogroup, radio roles).
+**Action:** Implemented a standardized `role="radiogroup"` on the container with `aria-labelledby` referencing the question, and dynamically applied `role="radio"`, `tabindex="0"`, `aria-checked`, and `keydown` event listeners to each option to recreate native radio button behavior accessible via keyboard and screen readers.
