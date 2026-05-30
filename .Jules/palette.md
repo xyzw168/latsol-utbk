@@ -1,0 +1,3 @@
+## 2024-05-24 - Quiz Options Keyboard Accessibility
+**Learning:** Interactive 'div' elements functioning as radio buttons require comprehensive ARIA (`role="radiogroup"`, `role="radio"`, `aria-checked`) and explicit keyboard event listeners (Enter/Space) with `e.preventDefault()` for Space to prevent unintended page scrolling, plus `:focus-visible` styles for visual feedback.
+**Action:** When implementing custom interactive choice lists, always pair `tabindex="0"` with keyboard event listeners, ARIA roles, and `aria-checked` state management scoped to the parent container.
