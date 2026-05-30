@@ -1,0 +1,3 @@
+## 2026-05-30 - [Custom Radio Group Accessibility & Playwright Focus Testing]
+**Learning:** When testing custom radio group accessibility implementations in Playwright, relying on clicking non-navigational elements (like `#q-text`) to set initial focus for subsequent simulated `Tab` keystrokes is unreliable if those elements lack a `tabindex`. This can cause `page.keyboard.press("Tab")` to fail to focus the expected target.
+**Action:** When validating focus states in Playwright for custom accessible components, bypass unpredictable DOM focus traversal by using `evaluate("el => el.focus()")` directly on the target element to guarantee focus before simulating interaction keys like Space or Enter.
